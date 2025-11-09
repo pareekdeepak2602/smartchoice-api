@@ -42,6 +42,7 @@ if (SECRET_MODE === "dotenv") {
 async function startServer() {
   const { default: confirmPayment } = await import("./routes/confirmPayment.js");
   const { default: withdraw } = await import("./routes/withdraw.js");
+  const { default: status } = await import("./routes/status.js"); // Add this line
 
   const app = express();
 
@@ -62,6 +63,7 @@ async function startServer() {
   // Routes
   app.use("/api/confirm-payment", confirmPayment);
   app.use("/api/withdraw", withdraw);
+  app.use("/api/status", status); // Add this line
 
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () =>
