@@ -127,7 +127,6 @@ router.get("/status", async (req, res) => {
       timestamp: new Date().toISOString(),
       version: "1.0.0"
     };
-
     res.json(buildResponse("success", "Service status retrieved", responseData));
     
   } catch (err) {

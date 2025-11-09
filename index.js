@@ -61,9 +61,13 @@ async function startServer() {
   app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 200 }));
 
   // Routes
+  app.get('/', (req, res) => {
+  res.send('Hello from API!');
+});
   app.use("/api/confirm-payment", confirmPayment);
   app.use("/api/withdraw", withdraw);
   app.use("/api/status", status); // Add this line
+
 
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () =>
